@@ -3,22 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Portfolio</title>
+    <title>Ultra-Advanced Graphical Portfolio</title>
     <style>
-        /* Basic responsive CSS for demonstration */
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #333; color: white; padding: 1rem; text-align: center; }
-        nav { background: #f4f4f4; padding: 0.5rem; }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 1rem; }
-        section { padding: 2rem; max-width: 1200px; margin: 0 auto; }
-        footer { background: #333; color: white; text-align: center; padding: 1rem; }
-        @media (max-width: 768px) { nav ul { flex-direction: column; } }
+        /* Reset and base styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: #333; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+
+        /* Header with glassmorphism effect */
+        header { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px); 
+            color: white; 
+            padding: 2rem; 
+            text-align: center; 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+            position: relative; 
+        }
+        header h1 { 
+            font-size: 3rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+            animation: fadeInUp 1s ease-out; 
+        }
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        /* Navigation with hover animations */
+        nav { 
+            background: rgba(0, 0, 0, 0.2); 
+            padding: 1rem; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+        }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: all 0.3s ease; 
+            padding: 0.5rem 1rem; 
+            border-radius: 25px; 
+        }
+        nav a:hover { 
+            background: rgba(255, 255, 255, 0.2); 
+            transform: scale(1.1); 
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); 
+        }
+
+        /* Main content with grid layout */
+        main { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 2rem; 
+            padding: 2rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        section { 
+            background: rgba(255, 255, 255, 0.9); 
+            border-radius: 15px; 
+            padding: 2rem; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+            transition: transform 0.3s ease; 
+        }
+        section:hover { 
+            transform: translateY(-10px); 
+        }
+
+        /* About section with flexbox */
+        #about { 
+            display: flex; 
+            align-items: center; 
+            gap: 2rem; 
+        }
+        #about img { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+            transition: transform 0.3s ease; 
+        }
+        #about img:hover { 
+            transform: rotate(360deg); 
+        }
+
+        /* Projects section with card grid */
+        #projects { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1rem; 
+        }
+        .project-card { 
+            background: linear-gradient(45deg, #ff9a9e, #fecfef); 
+            padding: 1rem; 
+            border-radius: 10px; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+        }
+        .project-card:hover { 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
+            transform: scale(1.05); 
+        }
+        .project-card img { 
+            width: 100%; 
+            border-radius: 10px; 
+        }
+
+        /* Contact form with advanced styling */
+        #contact form { 
+            display: grid; 
+            gap: 1rem; 
+        }
+        input, textarea { 
+            padding: 0.75rem; 
+            border: none; 
+            border-radius: 5px; 
+            background: rgba(255, 255, 255, 0.8); 
+            transition: all 0.3s ease; 
+        }
+        input:focus, textarea:focus { 
+            outline: none; 
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5); 
+        }
+        button { 
+            padding: 0.75rem; 
+            background: linear-gradient(45deg, #667eea, #764ba2); 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        /* Footer with animation */
+        footer { 
+            background: rgba(0, 0, 0, 0.8); 
+            color: white; 
+            text-align: center; 
+            padding: 1rem; 
+            animation: slideIn 1s ease-out; 
+        }
+        @keyframes slideIn { 
+            from { transform: translateX(-100%); } 
+            to { transform: translateX(0); } 
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) { 
+            main { grid-template-columns: 1fr; } 
+            #about { flex-direction: column; text-align: center; } 
+            nav ul { flex-direction: column; gap: 1rem; } 
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Advanced Portfolio</h1>
-        <p>Showcasing HTML5 features</p>
+        <h1>Ultra-Advanced Graphical Portfolio</h1>
+        <p>Featuring stunning CSS animations and layouts</p>
     </header>
 
     <nav>
@@ -31,36 +189,38 @@
 
     <main>
         <section id="about">
-            <h2>About Me</h2>
-            <p>This is an advanced HTML page using semantic elements like <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;article&gt;</code>.</p>
-            <article>
-                <h3>My Skills</h3>
-                <ul>
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </article>
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <div>
+                <h2>About Me</h2>
+                <p>This page showcases advanced HTML5 and CSS3 features, including glassmorphism, gradients, animations, and responsive grid layouts.</p>
+                <article>
+                    <h3>My Skills</h3>
+                    <ul>
+                        <li>HTML5 & CSS3 Mastery</li>
+                        <li>JavaScript Interactivity</li>
+                        <li>Responsive & Accessible Design</li>
+                    </ul>
+                </article>
+            </div>
         </section>
 
         <section id="projects">
             <h2>Projects</h2>
-            <figure>
-                <img src="https://via.placeholder.com/300" alt="Sample Project Image" loading="lazy">
-                <figcaption>A sample project image with lazy loading.</figcaption>
-            </figure>
-            <video controls width="400">
-                <source src="sample-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000;"></canvas>
-            <script>
-                // Basic canvas drawing for interactivity
-                const canvas = document.getElementById('myCanvas');
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = 'blue';
-                ctx.fillRect(10, 10, 50, 50);
-            </script>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200" alt="Project 1" loading="lazy">
+                <h3>Project 1</h3>
+                <p>A stunning web app with modern UI.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200" alt="Project 2" loading="lazy">
+                <h3>Project 2</h3>
+                <p>Innovative design with animations.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200" alt="Project 3" loading="lazy">
+                <h3>Project 3</h3>
+                <p>Responsive portfolio showcase.</p>
+            </div>
         </section>
 
         <section id="contact">
@@ -75,14 +235,13 @@
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
                 
-                <button type="submit">Send</button>
+                <button type="submit">Send Message</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2023 Ultra-Advanced Portfolio. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
