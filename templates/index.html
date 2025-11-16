@@ -3,45 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultra-Advanced Graphical Portfolio</title>
+    <title>Neo-Advanced Stylish Portfolio</title>
     <style>
-        /* Reset and base styles */
+        /* CSS Custom Properties for Dynamic Theming */
+        :root {
+            --primary-bg: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            --secondary-bg: rgba(255, 255, 255, 0.05);
+            --accent-color: #00d4ff;
+            --text-color: #e0e0e0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Reset and Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-            color: #333; 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--primary-bg); 
+            color: var(--text-color); 
             line-height: 1.6; 
             overflow-x: hidden; 
+            scroll-behavior: smooth; 
         }
 
-        /* Header with glassmorphism effect */
+        /* Floating Particles Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 40% 80%, rgba(0, 255, 100, 0.1) 0%, transparent 50%);
+            animation: floatParticles 20s infinite linear;
+            z-index: -1;
+        }
+        @keyframes floatParticles {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        /* Header with Neon Glow and 3D Effect */
         header { 
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(10px); 
-            color: white; 
-            padding: 2rem; 
+            background: var(--secondary-bg); 
+            backdrop-filter: blur(20px); 
+            padding: 3rem 2rem; 
             text-align: center; 
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+            box-shadow: var(--shadow); 
+            border-bottom: 2px solid var(--accent-color); 
             position: relative; 
+            overflow: hidden; 
         }
+        header::after {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
         header h1 { 
-            font-size: 3rem; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-            animation: fadeInUp 1s ease-out; 
+            font-size: 4rem; 
+            font-weight: 700; 
+            text-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--accent-color); 
+            animation: glowPulse 2s infinite alternate; 
+            transform-style: preserve-3d; 
         }
-        @keyframes fadeInUp { 
-            from { opacity: 0; transform: translateY(30px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes glowPulse { from { text-shadow: 0 0 20px var(--accent-color); } to { text-shadow: 0 0 30px var(--accent-color), 0 0 50px var(--accent-color); } }
+        header p { font-size: 1.2rem; opacity: 0.8; }
 
-        /* Navigation with hover animations */
+        /* Navigation with Magnetic Hover */
         nav { 
-            background: rgba(0, 0, 0, 0.2); 
+            background: var(--secondary-bg); 
             padding: 1rem; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
+            position: sticky; top: 0; z-index: 100; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
         }
         nav ul { 
             list-style: none; 
@@ -50,137 +85,181 @@
             gap: 2rem; 
         }
         nav a { 
-            color: white; 
+            color: var(--text-color); 
             text-decoration: none; 
-            font-weight: bold; 
-            transition: all 0.3s ease; 
-            padding: 0.5rem 1rem; 
-            border-radius: 25px; 
+            font-weight: 600; 
+            padding: 0.5rem 1.5rem; 
+            border-radius: var(--border-radius); 
+            transition: var(--transition); 
+            position: relative; 
+            overflow: hidden; 
         }
-        nav a:hover { 
-            background: rgba(255, 255, 255, 0.2); 
-            transform: scale(1.1); 
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); 
+        nav a::before {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--accent-color);
+            transition: left 0.4s;
+            z-index: -1;
         }
+        nav a:hover::before { left: 0; }
+        nav a:hover { color: #000; transform: scale(1.1) rotateX(10deg); }
 
-        /* Main content with grid layout */
+        /* Main Content with Advanced Grid and Parallax */
         main { 
             display: grid; 
             grid-template-columns: 1fr; 
-            gap: 2rem; 
-            padding: 2rem; 
-            max-width: 1200px; 
+            gap: 3rem; 
+            padding: 3rem 2rem; 
+            max-width: 1400px; 
             margin: 0 auto; 
         }
         section { 
-            background: rgba(255, 255, 255, 0.9); 
-            border-radius: 15px; 
-            padding: 2rem; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-            transition: transform 0.3s ease; 
+            background: var(--secondary-bg); 
+            border-radius: var(--border-radius); 
+            padding: 3rem; 
+            box-shadow: var(--shadow); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: var(--transition); 
+            position: relative; 
         }
         section:hover { 
-            transform: translateY(-10px); 
+            transform: translateY(-15px) rotateY(5deg); 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
         }
 
-        /* About section with flexbox */
+        /* Hero Section with Video Background */
+        #hero { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        #hero video { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: cover; z-index: -1; opacity: 0.3; 
+        }
+        #hero h2 { font-size: 3rem; margin-bottom: 1rem; }
+        #hero p { font-size: 1.5rem; }
+
+        /* About Section with Neumorphism */
         #about { 
             display: flex; 
             align-items: center; 
-            gap: 2rem; 
+            gap: 3rem; 
+            background: linear-gradient(145deg, #1e1e2f, #2a2a3e); 
+            box-shadow: 10px 10px 20px #0f0f1a, -10px -10px 20px #3a3a4e; 
         }
         #about img { 
-            width: 150px; 
-            height: 150px; 
+            width: 200px; height: 200px; 
             border-radius: 50%; 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-            transition: transform 0.3s ease; 
+            box-shadow: inset 5px 5px 10px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1); 
+            transition: var(--transition); 
         }
-        #about img:hover { 
-            transform: rotate(360deg); 
-        }
+        #about img:hover { transform: scale(1.1) rotate(15deg); }
 
-        /* Projects section with card grid */
+        /* Projects Section with Card Flip */
         #projects { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 1rem; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2rem; 
         }
         .project-card { 
-            background: linear-gradient(45deg, #ff9a9e, #fecfef); 
-            padding: 1rem; 
-            border-radius: 10px; 
-            text-align: center; 
-            transition: all 0.3s ease; 
+            perspective: 1000px; 
+            height: 300px; 
         }
-        .project-card:hover { 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
-            transform: scale(1.05); 
+        .project-card-inner { 
+            position: relative; 
+            width: 100%; height: 100%; 
+            transition: transform 0.6s; 
+            transform-style: preserve-3d; 
         }
-        .project-card img { 
-            width: 100%; 
-            border-radius: 10px; 
+        .project-card:hover .project-card-inner { transform: rotateY(180deg); }
+        .project-card-front, .project-card-back { 
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; 
+            border-radius: var(--border-radius); padding: 1rem; text-align: center; 
+            display: flex; flex-direction: column; justify-content: center; 
         }
+        .project-card-front { background: var(--secondary-bg); }
+        .project-card-back { background: var(--accent-color); color: #000; transform: rotateY(180deg); }
 
-        /* Contact form with advanced styling */
+        /* Contact Form with Floating Labels */
         #contact form { 
             display: grid; 
-            gap: 1rem; 
+            gap: 1.5rem; 
         }
+        .form-group { position: relative; }
         input, textarea { 
-            padding: 0.75rem; 
-            border: none; 
-            border-radius: 5px; 
-            background: rgba(255, 255, 255, 0.8); 
-            transition: all 0.3s ease; 
+            width: 100%; padding: 1rem; 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 10px; 
+            color: var(--text-color); 
+            transition: var(--transition); 
         }
         input:focus, textarea:focus { 
-            outline: none; 
-            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5); 
+            border-color: var(--accent-color); 
+            box-shadow: 0 0 20px var(--accent-color); 
+        }
+        label { 
+            position: absolute; top: 1rem; left: 1rem; 
+            color: rgba(255, 255, 255, 0.6); 
+            transition: var(--transition); 
+            pointer-events: none; 
+        }
+        input:focus + label, textarea:focus + label, input:not(:placeholder-shown) + label, textarea:not(:placeholder-shown) + label { 
+            top: -0.5rem; left: 0.5rem; font-size: 0.8rem; color: var(--accent-color); 
         }
         button { 
-            padding: 0.75rem; 
-            background: linear-gradient(45deg, #667eea, #764ba2); 
-            color: white; 
+            padding: 1rem; 
+            background: var(--accent-color); 
+            color: #000; 
             border: none; 
-            border-radius: 5px; 
+            border-radius: 10px; 
             cursor: pointer; 
-            transition: all 0.3s ease; 
+            transition: var(--transition); 
+            font-weight: 600; 
         }
         button:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5); 
         }
 
-        /* Footer with animation */
+        /* Footer with Wave Animation */
         footer { 
-            background: rgba(0, 0, 0, 0.8); 
-            color: white; 
+            background: var(--secondary-bg); 
             text-align: center; 
-            padding: 1rem; 
-            animation: slideIn 1s ease-out; 
+            padding: 2rem; 
+            position: relative; 
         }
-        @keyframes slideIn { 
-            from { transform: translateX(-100%); } 
-            to { transform: translateX(0); } 
+        footer::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 10px;
+            background: repeating-linear-gradient(90deg, var(--accent-color), var(--accent-color) 10px, transparent 10px, transparent 20px);
+            animation: wave 2s infinite linear;
         }
+        @keyframes wave { 0% { transform: translateX(-20px); } 100% { transform: translateX(0); } }
 
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) { 
-            main { grid-template-columns: 1fr; } 
-            #about { flex-direction: column; text-align: center; } 
-            nav ul { flex-direction: column; gap: 1rem; } 
+            header h1 { font-size: 2.5rem; }
+            main { padding: 2rem 1rem; }
+            #about { flex-direction: column; }
+            nav ul { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ultra-Advanced Graphical Portfolio</h1>
-        <p>Featuring stunning CSS animations and layouts</p>
+        <h1>Neo-Advanced Stylish Portfolio</h1>
+        <p>Blending cutting-edge CSS with futuristic aesthetics</p>
     </header>
 
     <nav>
         <ul>
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -188,16 +267,27 @@
     </nav>
 
     <main>
+        <section id="hero">
+            <video autoplay muted loop>
+                <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div>
+                <h2>Welcome to the Future</h2>
+                <p>Experience advanced web design with 3D effects, animations, and interactivity.</p>
+            </div>
+        </section>
+
         <section id="about">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <img src="https://via.placeholder.com/200" alt="Profile Picture">
             <div>
                 <h2>About Me</h2>
-                <p>This page showcases advanced HTML5 and CSS3 features, including glassmorphism, gradients, animations, and responsive grid layouts.</p>
+                <p>This portfolio features neumorphism, parallax particles, card flips, and more for a truly advanced, stylish experience.</p>
                 <article>
                     <h3>My Skills</h3>
                     <ul>
-                        <li>HTML5 & CSS3 Mastery</li>
-                        <li>JavaScript Interactivity</li>
+                        <li>Advanced CSS & HTML5</li>
+                        <li>3D Transforms & Animations</li>
                         <li>Responsive & Accessible Design</li>
                     </ul>
                 </article>
@@ -207,41 +297,82 @@
         <section id="projects">
             <h2>Projects</h2>
             <div class="project-card">
-                <img src="https://via.placeholder.com/300x200" alt="Project 1" loading="lazy">
-                <h3>Project 1</h3>
-                <p>A stunning web app with modern UI.</p>
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <h3>Project 1</h3>
+                        <p>Hover to flip and see details.</p>
+                    </div>
+                    <div class="project-card-back">
+                        <p>Advanced web app with modern UI and animations.</p>
+                    </div>
+                </div>
             </div>
             <div class="project-card">
-                <img src="https://via.placeholder.com/300x200" alt="Project 2" loading="lazy">
-                <h3>Project 2</h3>
-                <p>Innovative design with animations.</p>
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <h3>Project 2</h3>
+                        <p>Interactive design showcase.</p>
+                    </div>
+                    <div class="project-card-back">
+                        <p>Built with CSS Grid and JavaScript for dynamic content.</p>
+                    </div>
+                </div>
             </div>
             <div class="project-card">
-                <img src="https://via.placeholder.com/300x200" alt="Project 3" loading="lazy">
-                <h3>Project 3</h3>
-                <p>Responsive portfolio showcase.</p>
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <h3>Project 3</h3>
+                        <p>Stylish portfolio piece.</p>
+                    </div>
+                    <div class="project-card-back">
+                        <p>Featuring neon glows and 3D effects.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="contact">
             <h2>Contact Me</h2>
             <form action="/submit" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder=" " required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder=" " required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+                    <label for="message">Message</label>
+                </div>
                 <button type="submit">Send Message</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Ultra-Advanced Portfolio. All rights reserved.</p>
+        <p>&copy; 2023 Neo-Advanced Portfolio. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Simple Scroll-Triggered Animation (Advanced Interactivity)
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
